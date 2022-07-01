@@ -11,7 +11,7 @@ import (
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 
-	_ "github.com/RIDCHA-DATA/golang-rest-api/go-rest-template/docs"
+	_ "github.com/RIDCHA-DATA/golang-rest-api/docs"
 
 	"github.com/gin-contrib/requestid"
 	"github.com/gin-gonic/gin"
