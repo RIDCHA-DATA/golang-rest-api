@@ -2,6 +2,7 @@ package router
 
 import (
 	"fmt"
+	"golang-rest-api/internal/api/controllers"
 	"io"
 	"os"
 
@@ -14,9 +15,8 @@ import (
 	_ "github.com/RIDCHA-DATA/golang-rest-api/docs"
 
 	"github.com/gin-contrib/requestid"
-	"github.com/gin-gonic/gin"
-	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
-	"github.com/swaggo/gin-swagger/swaggerFiles"
+	"github.com/gin-gonic/gin" // gin-swagger middleware
+	//"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func Setup() *gin.Engine {
@@ -44,12 +44,12 @@ func Setup() *gin.Engine {
 	v1 := app.Group("/v1")
 
 	// Routes
-	//app.GET("/isActive", controllers.GetVersion)
+	app.GET("/isActive", controllers.GetVersion)
 	//app.GET("/actions", controllers.GetActions)
 	//app.POST("/command", controllers.PostAction)
 
 	// Swagger Endpoint
-	v1.GET("/api-docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	//v1.GET("/api-docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return app
 }
