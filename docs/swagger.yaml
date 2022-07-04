@@ -1,0 +1,12 @@
+basePath: /v1
+host: iam-service
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: IAM API REST in Golang with Gin Framework
+  title: eHealthcare Routing Service
+  version: "1.0"
+paths: {}
+swagger: "2.0"
