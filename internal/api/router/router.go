@@ -13,7 +13,7 @@ import (
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 
-	_ "golang-rest-api/docs"
+	_ "github.com/RIDCHA-DATA/golang-rest-api/internal/api/controllers/docs"
 
 	"github.com/gin-contrib/requestid"
 	"github.com/gin-gonic/gin" // gin-swagger middleware
