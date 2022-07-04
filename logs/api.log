@@ -1,0 +1,7 @@
+[GIN-debug] GET    /isActive                 --> github.com/RIDCHA-DATA/golang-rest-api/internal/api/controllers.GetVersion (6 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+{"level":"INFO","time":"2022-07-04T15:31:48.273+0200","caller":"logger/logger.go:87","msg":"/","status":404,"requestId":"5067bcfc-db70-451e-8fa9-360b57a4c47f","http":"GET / ","From":"SOME_SERVICE","source":"::1, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36","errors":"","time":0.000117399}
+{"level":"INFO","time":"2022-07-04T15:31:48.398+0200","caller":"logger/logger.go:87","msg":"/favicon.ico","status":404,"requestId":"650178b3-c965-4c15-91d7-4f68d116a6f9","http":"GET /favicon.ico ","From":"SOME_SERVICE","source":"::1, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36","errors":"","time":0.000032914}
+{"level":"INFO","time":"2022-07-04T15:32:20.195+0200","caller":"logger/logger.go:87","msg":"/isActive","status":200,"requestId":"a591b9ef-c0a2-481d-849f-8618c33a878a","http":"GET /isActive ","From":"SOME_SERVICE","source":"::1, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36","errors":"","time":0.000055088}
