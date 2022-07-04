@@ -3,9 +3,11 @@ package api
 import (
 	"fmt"
 
-	"github.com/RIDCHA-DATA/golang-rest-api/internal/api/router"
-	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/db"
+
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
+
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/api/router"
 
 	"github.com/gin-gonic/gin"
 )

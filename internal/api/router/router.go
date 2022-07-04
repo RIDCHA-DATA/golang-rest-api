@@ -2,9 +2,10 @@ package router
 
 import (
 	"fmt"
-	"golang-rest-api/internal/api/controllers"
 	"io"
 	"os"
+
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/api/controllers"
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/api/middlewares"
 
@@ -12,7 +13,7 @@ import (
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 
-	_ "github.com/RIDCHA-DATA/golang-rest-api/docs"
+	_ "golang-rest-api/docs"
 
 	"github.com/gin-contrib/requestid"
 	"github.com/gin-gonic/gin" // gin-swagger middleware

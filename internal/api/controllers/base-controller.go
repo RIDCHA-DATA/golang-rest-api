@@ -1,9 +1,11 @@
 package controllers
 
 import (
-	"golang-rest-api/internal/pkg/config"
-	"golang-rest-api/internal/pkg/models"
 	"net/http"
+
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/models"
+
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 
 	"github.com/containers/image/v5/pkg/docker/config"
 	"github.com/onsi/ginkgo/config"
