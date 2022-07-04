@@ -5,6 +5,7 @@ import (
 	"path"
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 
@@ -12,11 +13,11 @@ import (
 )
 
 var DB *pg.DB
-var SQLITE *gorm.DB
+var DBCTX *gorm.DB
 var err error
 
 // SetupDB opens a database and saves the reference to `Database` struct.
-func SetupDB() {
+func SetupDB() *gorm.DB {
 	configuration := config.GetConfig()
 
 	database := configuration.Database.Dbname
@@ -27,7 +28,7 @@ func SetupDB() {
 	Dialect := configuration.Database.Dialect
 
 	if Dialect == "sqlite3" {
-		SQLITE, err = gorm.Open("sqlite3", path.Join(".", "app.db"))
+		DBCTX, err = gorm.Open("sqlite3", path.Join(".", "app.db"))
 	} else {
 		DB = pg.Connect(&pg.Options{
 			Addr:     host + ":" + port,
@@ -43,4 +44,12 @@ func SetupDB() {
 			panic(err)
 		}
 	}
+	DBCTX.LogMode(true)
+	return DBCTX
+}
+func Migrate(database *gorm.DB) {
+
+	database.AutoMigrate(&models.Action{})
+
+	database.AutoMigrate(&models.AppInfo{})
 }
