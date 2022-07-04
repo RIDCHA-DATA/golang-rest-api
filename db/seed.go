@@ -5,15 +5,14 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/models"
 	"github.com/go-pg/pg/v10"
 
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	_ "github.com/lib/pq"
-
-	"sutjin/go-rest-template/internal/pkg/config"
-	"sutjin/go-rest-template/internal/pkg/models"
 )
 
 func main() {
