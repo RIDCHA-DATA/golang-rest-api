@@ -13,11 +13,11 @@ import (
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 
-	_ "github.com/RIDCHA-DATA/golang-rest-api/internal/api/controllers/docs"
+	_ "github.com/RIDCHA-DATA/golang-rest-api/docs"
 
 	"github.com/gin-contrib/requestid"
-	"github.com/gin-gonic/gin" // gin-swagger middleware
-	//"github.com/swaggo/gin-swagger/swaggerFiles"
+	"github.com/gin-gonic/gin"
+	_ "github.com/gin-gonic/gin" // gin-swagger middleware
 )
 
 func Setup() *gin.Engine {
@@ -42,7 +42,7 @@ func Setup() *gin.Engine {
 	app.Use(middlewares.CORS())
 	app.NoRoute(middlewares.NoRouteHandler())
 
-	v1 := app.Group("/v1")
+	//	v1 := app.Group("/v1")
 
 	// Routes
 	app.GET("/isActive", controllers.GetVersion)
