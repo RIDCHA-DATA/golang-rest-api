@@ -9,7 +9,6 @@ import (
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/models"
 	"github.com/icrowley/fake"
 	"github.com/jinzhu/gorm"
-	_ "k8s.io/client-go/kubernetes/typed/core/v1/fake"
 )
 
 func randomInt(min, max int) int {

@@ -5,12 +5,12 @@ server:
   mode: "debug"
 
 database:
-  dialect: sqlite3
-  dbname: "SOME_DATABASE"
-  host: "localhost"
+  dialect: pg
+  dbname: "fullstack_api"
+  host: "fullstack-postgres"
   port: "5432"
-  username: "postgres"
-  password: "1234"
+  username: "sc_u"
+  password: "password"
   max_lifetime: 7200
   max_open_conns: 150
   max_idle_conns: 50

@@ -3,9 +3,6 @@ package api
 import (
 	"fmt"
 
-	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/db"
-	"github.com/jinzhu/gorm"
-
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/api/router"
@@ -13,13 +10,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var DB *gorm.DB
-
 func setConfiguration(configPath string) {
 	config.Setup(configPath)
-	DB := db.SetupDB()
 	fmt.Println("==================> db migration")
-	db.Migrate(DB)
+	//db.Migrate(DB)
 	fmt.Println("==================> insert fake data")
 	//seeds.Seed()
 	gin.SetMode(config.GetConfig().Server.Mode)
