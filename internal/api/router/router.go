@@ -13,11 +13,10 @@ import (
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 
-	_ "github.com/RIDCHA-DATA/golang-rest-api/docs"
-
 	"github.com/gin-contrib/requestid"
 	"github.com/gin-gonic/gin"
-	_ "github.com/gin-gonic/gin" // gin-swagger middleware
+	swaggerfiles "github.com/swaggo/files"     // swagger embed files
+	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 )
 
 func Setup() *gin.Engine {
@@ -42,15 +41,13 @@ func Setup() *gin.Engine {
 	app.Use(middlewares.CORS())
 	app.NoRoute(middlewares.NoRouteHandler())
 
-	//	v1 := app.Group("/v1")
-
+	v1 := app.Group("/v1")
 	// Routes
 	app.GET("/isActive", controllers.GetVersion)
 	//app.GET("/actions", controllers.GetActions)
 	//app.POST("/command", controllers.PostAction)
-
 	// Swagger Endpoint
-	//v1.GET("/api-docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	v1.GET("/api-docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
 	return app
 }

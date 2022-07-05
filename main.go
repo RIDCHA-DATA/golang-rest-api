@@ -4,7 +4,7 @@ import (
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/api"
 )
 
-// @title eHealthcare Routing Service
+// @title Lab Routing Service with golang
 // @Golang API REST
 // @version 1.0
 // @description IAM API REST in Golang with Gin Framework
@@ -13,7 +13,7 @@ import (
 // @contact.url http://www.swagger.io/support
 // @contact.email support@swagger.io
 
-// @host iam-service
+// @host localhost:8080
 // @BasePath /v1
 // @query.collection.format multi
 

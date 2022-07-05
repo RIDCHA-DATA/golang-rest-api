@@ -19,16 +19,33 @@ const docTemplate = `{
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-    "paths": {}
+    "paths": {
+        "/isActive": {
+            "get": {
+                "description": "Get deployed version of the api from db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sample"
+                ],
+                "summary": "Get Current deployed version",
+                "responses": {}
+            }
+        }
+    }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "iam-service",
+	Host:             "localhost:8080",
 	BasePath:         "/v1",
 	Schemes:          []string{},
-	Title:            "eHealthcare Routing Service",
+	Title:            "Lab Routing Service with golang",
 	Description:      "IAM API REST in Golang with Gin Framework",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

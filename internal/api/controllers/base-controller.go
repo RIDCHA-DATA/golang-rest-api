@@ -12,6 +12,13 @@ import (
 	_ "github.com/onsi/ginkgo/config"
 )
 
+// isActive godoc
+// @Summary Get Current deployed version
+// @Description Get deployed version of the api from db
+// @Tags sample
+// @Accept  json
+// @Produce  json
+// @Router /isActive [get]
 func GetVersion(c *gin.Context) {
 	info := models.AppInfo{
 		Version:  config.Version,

@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "IAM API REST in Golang with Gin Framework",
-        "title": "eHealthcare Routing Service",
+        "title": "Lab Routing Service with golang",
         "contact": {
             "name": "API Support",
             "url": "http://www.swagger.io/support",
@@ -10,7 +10,24 @@
         },
         "version": "1.0"
     },
-    "host": "iam-service",
+    "host": "localhost:8080",
     "basePath": "/v1",
-    "paths": {}
+    "paths": {
+        "/isActive": {
+            "get": {
+                "description": "Get deployed version of the api from db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sample"
+                ],
+                "summary": "Get Current deployed version",
+                "responses": {}
+            }
+        }
+    }
 }
