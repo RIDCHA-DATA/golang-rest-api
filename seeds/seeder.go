@@ -1,6 +1,7 @@
 package seeds
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 
@@ -8,7 +9,7 @@ import (
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/models"
 	"github.com/icrowley/fake"
 	"github.com/jinzhu/gorm"
-	"k8s.io/client-go/kubernetes/typed/core/v1/fake"
+	_ "k8s.io/client-go/kubernetes/typed/core/v1/fake"
 )
 
 func randomInt(min, max int) int {
@@ -35,7 +36,7 @@ func seedUsers(db *gorm.DB) {
 	actionToSeed -= actionCount
 	if actionToSeed > 0 {
 		for i := 0; i < actionToSeed; i++ {
-			action := models.Action{Action: fake.FakeServiceAccounts()}
+			action := models.Action{Action: fake.FirstName()}
 			// No need to add the role as we did for seedAdmin, it is added by the BeforeSave hook
 			db.Set("gorm:association_autoupdate", false).Create(&action)
 		}
@@ -45,5 +46,6 @@ func seedUsers(db *gorm.DB) {
 func Seed() {
 	db := db.SetupDB()
 	rand.Seed(time.Now().UnixNano())
+	fmt.Println(db)
 	seedUsers(db)
 }

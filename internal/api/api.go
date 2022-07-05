@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/db"
-	"github.com/RIDCHA-DATA/golang-rest-api/seeds"
 	"github.com/jinzhu/gorm"
 
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
@@ -22,7 +21,7 @@ func setConfiguration(configPath string) {
 	fmt.Println("==================> db migration")
 	db.Migrate(DB)
 	fmt.Println("==================> insert fake data")
-	seeds.Seed()
+	//seeds.Seed()
 	gin.SetMode(config.GetConfig().Server.Mode)
 }
 
@@ -33,6 +32,7 @@ func Run(configPath string) {
 
 	setConfiguration(configPath)
 	conf := config.GetConfig()
+	println("i am here")
 	web := router.Setup()
 	fmt.Println("Go API REST Running on port " + conf.Server.Port)
 	fmt.Println("==================>")
