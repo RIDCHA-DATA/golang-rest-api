@@ -62,7 +62,7 @@ func main() {
 	}
 
 	models := []interface{}{
-		(*models.Action)(&models.Action{
+		(*models.Actions)(&models.Actions{
 			Action: "PostRegistration",
 		}),
 	}
