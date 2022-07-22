@@ -38,14 +38,14 @@ func Setup() *gin.Engine {
 	app.Use(requestid.New())
 	app.Use(logger.GinLogger(), logger.GinRecovery(true))
 	app.Use(gin.Recovery())
-	app.Use(middlewares.CORS())
+	//	app.Use(middlewares.CORS())
 	app.NoRoute(middlewares.NoRouteHandler())
 
 	v1 := app.Group("/v1")
 	// Routes
-	app.GET("/isActive", controllers.GetVersion)
-	//app.GET("/actions", controllers.GetActions)
-	//app.POST("/command", controllers.PostAction)
+	v1.GET("/isActive", controllers.GetVersion)
+	v1.GET("/actions", controllers.GetActions)
+	v1.POST("/command", controllers.PostAction)
 	// Swagger Endpoint
 	v1.GET("/api-docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 

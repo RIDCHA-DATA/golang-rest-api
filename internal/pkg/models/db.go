@@ -1,5 +1,5 @@
 package models
 
-type Action struct {
+type Actions struct {
 	Action string
 }

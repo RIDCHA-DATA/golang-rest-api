@@ -22,7 +22,6 @@ type ServerConfiguration struct {
 }
 
 type DatabaseConfiguration struct {
-	Dialect      string
 	Driver       string
 	Dbname       string
 	Username     string

@@ -1,50 +1,81 @@
-package seeds
+package main
 
 import (
+	"context"
+	"database/sql"
 	"fmt"
-	"math/rand"
-	"time"
 
-	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/db"
+	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/config"
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/pkg/models"
-	"github.com/icrowley/fake"
-	"github.com/jinzhu/gorm"
+	"github.com/go-pg/pg/v10"
+
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
+	_ "github.com/lib/pq"
 )
 
-func randomInt(min, max int) int {
+func main() {
+	config.Setup("config.dev.yml")
 
-	return rand.Intn(max-min) + min
-}
+	database_config := config.Config.Database
 
-var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-
-func randomString(length int) string {
-	b := make([]rune, length)
-	for i := range b {
-		b[i] = letterRunes[rand.Intn(len(letterRunes))]
+	db, err := sql.Open("postgres",
+		"postgres://"+database_config.Username+":"+database_config.Password+"@"+database_config.Host+":5432/"+database_config.Dbname+"?sslmode=disable")
+	if err != nil {
+		fmt.Print(err.Error())
+		panic(err)
 	}
-	return string(b)
-}
 
-func seedUsers(db *gorm.DB) {
+	driver, err := postgres.WithInstance(db, &postgres.Config{})
+	if err != nil {
+		fmt.Print(err.Error())
+		panic(err)
+	}
 
-	var action []models.Action
-	db.Model(&action).Related(&action, "Action")
-	actionCount := len(action)
-	actionToSeed := 20
-	actionToSeed -= actionCount
-	if actionToSeed > 0 {
-		for i := 0; i < actionToSeed; i++ {
-			action := models.Action{Action: fake.FirstName()}
-			// No need to add the role as we did for seedAdmin, it is added by the BeforeSave hook
-			db.Set("gorm:association_autoupdate", false).Create(&action)
+	m, err := migrate.NewWithDatabaseInstance(
+		"file:./seeds/migrations",
+		"postgres", driver)
+
+	if err != nil {
+		fmt.Print(err.Error())
+		panic(err)
+	}
+
+	m.Steps(2)
+
+	fmt.Println("Migration completed")
+	fmt.Println("Seeding Database")
+
+	pgdb := pg.Connect(&pg.Options{
+		User:     database_config.Username,
+		Password: database_config.Password,
+		Database: database_config.Dbname,
+	})
+	defer pgdb.Close()
+
+	// Check if DB is connected
+	ctx := context.Background()
+	if err := pgdb.Ping(ctx); err != nil {
+		fmt.Print(err.Error())
+		panic(err)
+	}
+
+	models := []interface{}{
+		(*models.Action)(&models.Action{
+			Action: "PostRegistration",
+		}),
+	}
+	for _, model := range models {
+		r, e := pgdb.Model(model).Count()
+		fmt.Println(r)
+		fmt.Println(e)
+		_, err := pgdb.Model(model).SelectOrInsert()
+		if err != nil {
+			fmt.Print(err.Error())
+			panic(err)
 		}
 	}
-}
 
-func Seed() {
-	db := db.SetupDB()
-	rand.Seed(time.Now().UnixNano())
-	fmt.Println(db)
-	seedUsers(db)
+	fmt.Print("Database Seeded")
 }

@@ -18,3 +18,16 @@ go run main.go
     - [ ] go test & build
     - [ ] Dcoker image build
     - [ ] Helm chart package/build
+
+
+commands:
+
+## Start the api
+```bash
+GO111MODULE=on go run main.go
+```
+
+# Generate Swagger docs (version 1.7.9) ref: https://github.com/swaggo/swag/issues/1126
+```bash
+swag init --parseDependency --parseInternal -g main.go
+```

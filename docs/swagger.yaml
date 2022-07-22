@@ -1,4 +1,10 @@
 basePath: /v1
+definitions:
+  models.Action:
+    properties:
+      action:
+        type: string
+    type: object
 host: localhost:8080
 info:
   contact:
@@ -9,6 +15,45 @@ info:
   title: Lab Routing Service with golang
   version: "1.0"
 paths:
+  /actions:
+    get:
+      consumes:
+      - application/json
+      description: Get available action from db
+      operationId: get-action
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Action'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: int
+      summary: Get Available Actions
+      tags:
+      - sample
+    post:
+      consumes:
+      - application/json
+      description: Post new action to DB
+      operationId: post-action
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Action'
+        "400":
+          description: Bad Request
+          schema:
+            type: int
+      summary: Post new action
+      tags:
+      - sample
   /isActive:
     get:
       consumes:

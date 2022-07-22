@@ -1,5 +1,7 @@
 package e
 
+import "github.com/gin-gonic/gin"
+
 var MsgFlags = map[int]string{
 	SUCCESS:                        "Ok",
 	ERROR:                          "Fail",
@@ -26,4 +28,19 @@ func GetMsg(code int) string {
 	}
 
 	return MsgFlags[ERROR]
+}
+
+// raise error
+func NewError(c *gin.Context, status int, err string) {
+	er := HTTPError{
+		Code:    status,
+		Message: err,
+	}
+	c.JSON(status, er)
+}
+
+// http error type
+type HTTPError struct {
+	Code    int    `json:"code" example:"400"`
+	Message string `json:"message" example:"status bad request"`
 }

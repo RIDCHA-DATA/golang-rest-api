@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "github.com/RIDCHA-DATA/golang-rest-api/docs"
 	"github.com/RIDCHA-DATA/golang-rest-api/internal/api"
 )
 

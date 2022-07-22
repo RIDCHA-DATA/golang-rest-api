@@ -13,6 +13,64 @@
     "host": "localhost:8080",
     "basePath": "/v1",
     "paths": {
+        "/actions": {
+            "get": {
+                "description": "Get available action from db",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sample"
+                ],
+                "summary": "Get Available Actions",
+                "operationId": "get-action",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Action"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Post new action to DB",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sample"
+                ],
+                "summary": "Post new action",
+                "operationId": "post-action",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Action"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                }
+            }
+        },
         "/isActive": {
             "get": {
                 "description": "Get deployed version of the api from db",
@@ -27,6 +85,16 @@
                 ],
                 "summary": "Get Current deployed version",
                 "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "models.Action": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                }
             }
         }
     }
