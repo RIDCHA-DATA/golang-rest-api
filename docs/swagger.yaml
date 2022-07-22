@@ -34,7 +34,7 @@ paths:
             type: int
       summary: Get Available Actions
       tags:
-      - sample
+      - actions
     post:
       consumes:
       - application/json
@@ -53,7 +53,7 @@ paths:
             type: int
       summary: Post new action
       tags:
-      - sample
+      - actions
   /isActive:
     get:
       consumes:

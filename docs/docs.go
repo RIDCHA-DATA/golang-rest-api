@@ -30,7 +30,7 @@ const docTemplate_swagger = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sample"
+                    "actions"
                 ],
                 "summary": "Get Available Actions",
                 "operationId": "get-action",
@@ -58,7 +58,7 @@ const docTemplate_swagger = `{
                     "application/json"
                 ],
                 "tags": [
-                    "sample"
+                    "actions"
                 ],
                 "summary": "Post new action",
                 "operationId": "post-action",

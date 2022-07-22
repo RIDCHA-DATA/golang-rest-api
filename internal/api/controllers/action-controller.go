@@ -13,7 +13,7 @@ import (
 // GetActions
 // @Summary Get Available Actions
 // @Description Get available action from db
-// @Tags sample
+// @Tags actions
 // @ID get-action
 // @Accept  json
 // @Produce  json
@@ -35,7 +35,7 @@ func GetActions(c *gin.Context) {
 // PostAction godoc
 // @Summary Post new action
 // @Description Post new action to DB
-// @Tags sample
+// @Tags actions
 // @ID post-action
 // @Accept  json
 // @Produce  json

@@ -45,7 +45,7 @@ func Setup() *gin.Engine {
 	// Routes
 	v1.GET("/isActive", controllers.GetVersion)
 	v1.GET("/actions", controllers.GetActions)
-	v1.POST("/command", controllers.PostAction)
+	v1.POST("/actions", controllers.PostAction)
 	// Swagger Endpoint
 	v1.GET("/api-docs/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
